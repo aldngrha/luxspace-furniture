@@ -3,6 +3,7 @@ import Header from "../parts/Header";
 import Hero from "../parts/Hero";
 import JustArrived from "../parts/LandingPage/JustArrived";
 import BrowseRoom from "../parts/LandingPage/BrowseRoom";
+import Client from "../parts/Client";
 
 export default function LandingPage() {
   return (
@@ -11,6 +12,7 @@ export default function LandingPage() {
       <Hero />
       <BrowseRoom />
       <JustArrived />
+      <Client />
     </>
   );
 }
