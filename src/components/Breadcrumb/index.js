@@ -20,22 +20,11 @@ export default function Breadcrumb(props) {
               </li>
             );
           })}
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="#">Office Room</a>
-          </li>
-          <li>
-            <a href="#" aria-label="current-page">
-              Details
-            </a>
-          </li>
         </ul>
       </div>
     </section>
   );
 }
 Breadcrumb.propTypes = {
-  list: propType.array.isRequired,
+  list: propTypes.array.isRequired,
 };

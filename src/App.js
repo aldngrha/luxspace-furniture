@@ -1,13 +1,17 @@
 import "./assets/css/app.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
+import Detail from "./pages/Detail";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Route path="/" component={LandingPage} />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/categories/:slug" element={<Detail />} />
+        </Routes>
       </Router>
     </div>
   );
