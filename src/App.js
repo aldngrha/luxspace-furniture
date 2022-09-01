@@ -1,9 +1,14 @@
 import "./assets/css/app.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-2xl text-blue-800">Hello World</h1>
+      <Router>
+        <Route path="/" component={LandingPage} />
+      </Router>
     </div>
   );
 }
