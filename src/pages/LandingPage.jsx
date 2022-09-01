@@ -5,6 +5,7 @@ import JustArrived from "../parts/LandingPage/JustArrived";
 import BrowseRoom from "../parts/LandingPage/BrowseRoom";
 import Client from "../parts/Client";
 import Sitemap from "../parts/Sitemap";
+import Footer from "../parts/Footer";
 
 export default function LandingPage() {
   return (
@@ -15,6 +16,7 @@ export default function LandingPage() {
       <JustArrived />
       <Client />
       <Sitemap />
+      <Footer />
     </>
   );
 }
