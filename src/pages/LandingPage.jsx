@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../parts/Header";
-import Hero from "../parts/Hero";
+import Hero from "../parts/LandingPage/Hero";
 import JustArrived from "../parts/LandingPage/JustArrived";
 import BrowseRoom from "../parts/LandingPage/BrowseRoom";
 import Client from "../parts/Client";
