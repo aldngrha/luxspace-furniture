@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import Detail from "./pages/Detail";
+import Cart from "./pages/Cart";
+import Congratulations from "./pages/Congratulations";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -11,6 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/categories/:slug" element={<Detail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/congratulations" element={<Congratulations />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>
