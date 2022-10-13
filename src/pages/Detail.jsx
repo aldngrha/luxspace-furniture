@@ -13,8 +13,8 @@ export default function Detail() {
       <Breadcrumb
         list={[
           { url: "/", name: "Home" },
-          { url: "/categories/office-room", name: "Office Room" },
-          { url: "/categories/office-room/products/1", name: "Detail" },
+          { url: "/categories/1231", name: "Office Room" },
+          { url: "/categories/1231/products/1", name: "Detail" },
         ]}
       />
       <ProductDetail />
