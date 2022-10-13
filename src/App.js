@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/categories/:slug" element={<Detail />} />
+          <Route path="/categories/:idc" element={<Detail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/congratulations" element={<Congratulations />} />
           <Route path="*" element={<NotFound />} />
