@@ -26,8 +26,8 @@ export default function Suggestion({ data }) {
                       alt=""
                       className="w-full h-full object-cover object-center"
                     />
-                    <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
                   </div>
+                  <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
                   <span className="">IDR {item.price}</span>
                   <Link
                     to={`/categories/${item.idc}/products/${item.id}`}
