@@ -7,9 +7,11 @@ import Cart from "./pages/Cart";
 import Congratulations from "./pages/Congratulations";
 import NotFound from "./pages/NotFound";
 
+import Provider from "./helpers/hooks/useGlobalContext";
+
 function App() {
   return (
-    <div className="App">
+    <Provider>
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -20,7 +22,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </div>
+    </Provider>
   );
 }
 
