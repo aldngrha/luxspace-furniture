@@ -8,6 +8,7 @@ import ProductDetail from "../parts/Details/ProductDetail";
 import Suggestion from "../parts/Details/Suggestion";
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
+import PageErrorMessage from "../parts/PageErrorMessage";
 
 import useAsync from "../helpers/hooks/useAsync";
 import fetch from "../helpers/fetch";
@@ -110,7 +111,7 @@ function LoadingSuggestions() {
 export default function Detail() {
   useScrollToTop();
   const { idp } = useParams();
-  const { data, run, isLoading } = useAsync();
+  const { data, error, run, isLoading, isError } = useAsync();
 
   useEffect(() => {
     run(fetch({ url: `/api/products/${idp}` }));
@@ -126,12 +127,27 @@ export default function Detail() {
           { url: "/categories/1231/products/1", name: "Detail" },
         ]}
       />
-      {isLoading ? <LoadingProductDetails /> : <ProductDetail data={data} />}
-      {isLoading ? (
-        <LoadingSuggestions />
+
+      {isError ? (
+        <PageErrorMessage
+          title="Product Not Found"
+          body={error.errors.message}
+        />
       ) : (
-        <Suggestion data={data?.relatedProducts || {}} />
+        <>
+          {isLoading ? (
+            <LoadingProductDetails />
+          ) : (
+            <ProductDetail data={data} />
+          )}
+          {isLoading ? (
+            <LoadingSuggestions />
+          ) : (
+            <Suggestion data={data?.relatedProducts || {}} />
+          )}
+        </>
       )}
+
       <Sitemap />
       <Footer />
     </>
