@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useAsync from "../../helpers/hooks/useAsync";
 import useForm from "../../helpers/hooks/useForm";
 import fetch from "../../helpers/fetch";
+import { useGlobalContext } from "../../helpers/hooks/useGlobalContext";
 
 export default function ShippingDetails() {
+  const navigate = useNavigate();
   const { data, run, isLoading } = useAsync();
+  const { state, dispatch } = useGlobalContext();
+
   const { state: payload, fnUpdateState } = useForm({
     completeName: "",
     emailAddress: "",
@@ -15,14 +20,41 @@ export default function ShippingDetails() {
     payment: "",
   });
 
+  const isSubmitDisabled =
+    Object.keys(payload).filter((key) => {
+      return payload[key] !== "";
+    }).length === Object.keys(payload).length;
+
   useEffect(() => {
-    run(fetch({ url: "/api/checkout/meta" }));
+    run(fetch({ url: `/api/checkout/meta` }));
   }, [run]);
 
+  async function fnSubmit(event) {
+    event.preventDefault();
+    try {
+      const res = await fetch({
+        url: `/api/checkout`,
+        method: "POST",
+        body: JSON.stringify({
+          ...payload,
+          cart: Object.keys(state.cart).map((key) => state.cart[key]),
+        }),
+      });
+
+      if (res) {
+        navigate("/congratulations");
+        dispatch({
+          type: "RESET_CART",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="w-full md:px-4 md:w-4/12" id="shipping-detail">
       <div className="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
-        <form action="success.html">
+        <form onSubmit={fnSubmit}>
           <div className="flex flex-start mb-6">
             <h3 className="text-2xl">Shipping Details</h3>
           </div>
@@ -161,7 +193,7 @@ export default function ShippingDetails() {
           <div className="text-center">
             <button
               type="submit"
-              disabled
+              disabled={!isSubmitDisabled}
               className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 focus:outline-none w-full py-3 rounded-full text-lg focus:text-black transition-all duration-200 px-6"
             >
               Checkout Now

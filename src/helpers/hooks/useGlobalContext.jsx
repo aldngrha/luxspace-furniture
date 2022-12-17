@@ -36,6 +36,11 @@ function Reducer(state, action) {
             return acc;
           }, {}),
       };
+    case "RESET_CART":
+      return {
+        ...state,
+        cart: initialState.cart,
+      };
     default: {
       throw new Error(`Unhandled action type ${action.type}`);
     }
