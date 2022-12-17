@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Header from "../parts/Header";
 import Breadcrumb from "../components/Breadcrumb/index";
@@ -110,9 +110,9 @@ export default function Detail() {
   const { idp } = useParams();
   const { data, run, isLoading } = useAsync();
 
-  React.useEffect(() => {
+  useEffect(() => {
     run(fetch({ url: `/api/products/${idp}` }));
-  }, [run]);
+  }, [run, idp]);
 
   return (
     <>

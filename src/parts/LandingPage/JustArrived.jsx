@@ -22,7 +22,7 @@ function Loading() {
 }
 
 export default function JustArrived() {
-  const { data, status, error, run, isLoading } = useAsync();
+  const { data, error, run, isLoading } = useAsync();
   const refContainer = useRef(null);
 
   useEffect(() => {

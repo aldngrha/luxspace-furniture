@@ -11,7 +11,7 @@ export default function ProductDetail({ data }) {
       <div className="flex flex-wrap my-4 md:my-12">
         <div className="w-full md:hidden px-4">
           <h2 className="text-5xl font-semibold">{data.title}</h2>
-          <span className="text-xl">IDR {data.price}</span>
+          <span className="text-xl mt-3">IDR {data.price}</span>
         </div>
         <div className="flex-1">
           <div className="slider">
