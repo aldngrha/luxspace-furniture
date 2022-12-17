@@ -11,6 +11,7 @@ import Footer from "../parts/Footer";
 
 import useAsync from "../helpers/hooks/useAsync";
 import fetch from "../helpers/fetch";
+import useScrollToTop from "../helpers/hooks/useScrollToTop";
 
 function LoadingProductDetails() {
   return (
@@ -107,6 +108,7 @@ function LoadingSuggestions() {
 }
 
 export default function Detail() {
+  useScrollToTop();
   const { idp } = useParams();
   const { data, run, isLoading } = useAsync();
 

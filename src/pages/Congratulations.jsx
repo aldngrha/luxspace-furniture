@@ -4,8 +4,10 @@ import Header from "../parts/Header";
 import Breadcrumb from "../components/Breadcrumb";
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
+import useScrollToTop from "../helpers/hooks/useScrollToTop";
 
 export default function Congratulations() {
+  useScrollToTop();
   return (
     <>
       <Header theme="black" />
